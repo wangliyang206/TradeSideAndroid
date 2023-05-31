@@ -1,0 +1,3 @@
+//包含的子模块
+include ':app'
+include ':arms', ':arms-autolayout', ':arms-imageloader-glide'
