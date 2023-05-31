@@ -52,6 +52,12 @@ android {
         //测试环境
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
 
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            //热修复支持五种
+            abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'x86', 'x86_64'
+        }
+
         //是否使用本地测试数据
         buildConfigField "boolean", "IS_DEBUG_DATA", "true"
 
@@ -103,7 +109,7 @@ android {
             buildConfigField "String", "BUGLY_APP_ID", "\"09b10840f5\""
 
             // SP文件名称
-            buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedGrainFullTest\""
+            buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedTradeSideTest\""
 
             // 服务地址
 //            buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
@@ -113,8 +119,9 @@ android {
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name_debug"
-                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key_debug"
-                                    , UM_APP_KEY  : "@string/um_app_key_manifest_debug"]
+                                    , ALICLOUD_APP_ID    : "@string/alicloud_app_id_debug"
+                                    , ALICLOUD_APP_SECRET: "@string/alicloud_app_secret_debug"
+                                    , ALICLOUD_APP_RSA   : "@string/alicloud_app_rsa_debug"]
         }
 
         //发布版本
@@ -144,15 +151,16 @@ android {
             buildConfigField "String", "BUGLY_APP_ID", "\"ffa3afe589\""
 
             // SP文件名称
-            buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedGrainFull\""
+            buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedTradeSide\""
 
             // 服务地址
             buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name"
-                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key"
-                                    , UM_APP_KEY  : "@string/um_app_key_manifest"]
+                                    , ALICLOUD_APP_ID    : "@string/alicloud_app_id"
+                                    , ALICLOUD_APP_SECRET: "@string/alicloud_app_secret"
+                                    , ALICLOUD_APP_RSA   : "@string/alicloud_app_rsa"]
         }
     }
 
@@ -217,6 +225,32 @@ greendao {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //androidx
+    implementation(rootProject.ext.dependencies["cardview"]) {
+        exclude module: 'annotation'
+    }
+
+    //tools
+    //注意 Arms 核心库现在并不会依赖某个 EventBus, 要想使用 EventBus, 还请在项目中自行依赖对应的 EventBus
+    //现在支持两种 EventBus, greenrobot 的 EventBus 和畅销书 《Android源码设计模式解析与实战》的作者 何红辉 所作的 AndroidEventBus
+    //依赖后 Arms 会自动检测您依赖的 EventBus 并自动注册
+    //建议使用 AndroidEventBus, 特别是组件化项目, 原因请看 https://github.com/hehonghui/AndroidEventBus/issues/49
+    //这种做法可以让使用者有自行选择三方库的权利, 并且还可以减轻 Arms 的体积
+    implementation rootProject.ext.dependencies["androideventbus"]
+//    implementation rootProject.ext.dependencies["eventbus"]
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    implementation rootProject.ext.dependencies["progressmanager"]
+    implementation rootProject.ext.dependencies["retrofit-url-manager"]
+    implementation rootProject.ext.dependencies["lifecyclemodel"]
+
+    //view
+    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+        exclude module: 'annotation'
+    }
+    implementation(rootProject.ext.dependencies["paginate"]) {
+        exclude module: 'recyclerview'
+    }
+
     //arms
     implementation project(':arms')
 //    implementation 'me.jessyan:arms:2.5.2'
@@ -256,4 +290,14 @@ dependencies {
         exclude module: "support-v13"
     }
     annotationProcessor rootProject.ext.dependencies["permission-processor"]
+    // 阿里云Sophix热修复
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.3.5'
+    // GreenDao 数据库(https://github.com/greenrobot/greenDAO)
+    implementation 'org.greenrobot:greendao:3.3.0'
+    // 高仿微信图片选择器(https://github.com/Lichenwei-Dev/ImagePicker)
+    implementation('com.lcw.library:imagepicker:2.2.8') {
+        exclude module: 'appcompat'
+    }
+    // 二维码
+    api "com.google.zxing:core:3.3.0"
 }
