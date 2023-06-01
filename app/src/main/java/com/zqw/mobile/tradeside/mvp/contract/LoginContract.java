@@ -26,8 +26,11 @@ public interface LoginContract {
         void setPassword(String password);
         /** 跳转致首页 */
         void jumbToMain();
-        /** 跳转致快捷登录 */
-        void jumbToQuickLogin(String mobile);
+        // 倒计时结果
+        void setTipsValue(Long str);
+
+        // 倒计时时控制按钮是否可用
+        void setBtnEnabled(boolean val);
 
         /** 升级询问 */
         void askDialog(AppUpdate info);
@@ -35,13 +38,15 @@ public interface LoginContract {
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
     interface Model extends IModel {
-        /** 登录 */
+        // 登录
         Observable<LoginResponse> toLogin(String username, String password);
+        // 登录
+        Observable<LoginResponse> quickLogin(String mobile, String code);
 
-        /** 登录-获取短信验证码 */
+        // 登录-获取短信验证码
         Observable<CommonResponse> loginSMS(String mobile);
 
-        /** 获取APP版本信息 */
+        // 获取APP版本信息
         Observable<AppUpdate> getVersion(String type);
     }
 }

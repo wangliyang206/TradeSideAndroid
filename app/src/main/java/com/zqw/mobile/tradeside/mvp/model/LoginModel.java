@@ -51,6 +51,15 @@ public class LoginModel extends BaseModel implements LoginContract.Model {
     }
 
     @Override
+    public Observable<LoginResponse> quickLogin(String mobile, String code) {
+        Map<String, String> params = new HashMap<>();
+        params.put("mobile", mobile);
+        params.put("code", code);
+
+        return apiOperator.chain(params, request -> mRepositoryManager.obtainRetrofitService(AccountService.class).quickLogin(request));
+    }
+
+    @Override
     public Observable<CommonResponse> loginSMS(String mobile) {
         Map<String, String> params = new HashMap<>();
         params.put("mobile", mobile);

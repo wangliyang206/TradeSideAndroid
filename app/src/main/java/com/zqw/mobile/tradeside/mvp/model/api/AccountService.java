@@ -7,6 +7,7 @@ import com.zqw.mobile.tradeside.mvp.model.entity.CommonResponse;
 import com.zqw.mobile.tradeside.mvp.model.entity.LoginResponse;
 
 import java.util.Map;
+
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
@@ -30,6 +31,10 @@ public interface AccountService {
     //登录
     @POST("member/login")
     Observable<GsonResponse<LoginResponse>> toLogin(@Body GsonRequest<Map<String, Object>> request);
+
+    //快捷登录
+    @POST("member/quickLogin")
+    Observable<GsonResponse<LoginResponse>> quickLogin(@Body GsonRequest<Map<String, String>> request);
 
     //验证Token有效性
     @POST("member/validToken")

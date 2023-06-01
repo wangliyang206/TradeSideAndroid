@@ -21,6 +21,7 @@
             android:padding="10dp"
             android:src="@mipmap/ic_login_close" />
     </LinearLayout>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -154,11 +155,10 @@
 
                 <TextView
                     android:id="@+id/txvi_loginactivity_forgotpassword"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
                     android:gravity="center"
-                    android:padding="5dp"
                     android:text="忘记密码"
                     android:textColor="@color/login_txt_color"
                     android:textSize="14sp" />
@@ -214,6 +214,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/log_in_button_selector"
+        android:enabled="false"
         android:gravity="center"
         android:paddingLeft="8dp"
         android:paddingTop="5dp"

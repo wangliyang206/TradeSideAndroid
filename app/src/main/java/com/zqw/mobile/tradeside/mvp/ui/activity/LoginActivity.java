@@ -58,7 +58,7 @@ import butterknife.OnClick;
  * @author 赤槿
  * module name is LoginActivity
  */
-public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View, TextWatcher {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View, TextWatcher, View.OnClickListener {
     /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.activity_login)
     LinearLayout contentLayout;                                                                     // 界面总布局
@@ -75,14 +75,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @BindView(R.id.imgvi_modifyloginpwdactivity_password_see)
     ImageView imgviPwdsee;                                                                          // 密码可见
 
-    @BindView(R.id.txvi_loginactivity_forgotpassword)
+    @BindView(R.id.txvi_loginactivity_forgotpassword)                                               // 获取验证码、忘记密码
     TextView txviForgotPassword;
 
     @BindView(R.id.txvi_loginactivity_switchlogin)
     TextView txviSwitchLogin;                                                                       // 切换登录方式：短信验证码登录、账号密码登录
 
     @BindView(R.id.btn_loginactivity_submit)
-    Button btnLogin;                                                                                // 登录or获取验证码 按钮
+    Button btnLogin;                                                                                // 登录
 
     @BindView(R.id.txvi_loginactivity_tips)
     TextView txviAgreement;                                                                         // 协议提示
@@ -175,6 +175,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         edtTxtUsername.addTextChangedListener(this);
         edtTxtPassword.addTextChangedListener(this);
 
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                btnLogin.setEnabled(true);
+            } else {
+                btnLogin.setEnabled(false);
+            }
+        });
+
         // 初始化Loading对话框
         mDialog = new MaterialDialog.Builder(this).content(R.string.loginactivity_login_processtips).progress(true, 0).build();
     }
@@ -199,11 +207,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             case R.id.imvi_login_close:                                                             // 返回
                 onBackPressed();
                 break;
-            case R.id.btn_loginactivity_submit:                                                     // 登录or获取验证码
+            case R.id.btn_loginactivity_submit:                                                     // 登录
                 String username = edtTxtUsername.getText().toString().trim();
                 String password = edtTxtPassword.getText().toString().trim();
                 if (mPresenter != null) {
-                    mPresenter.btnLoginOnClick(username, password, mSwitchLogin, checkBox.isChecked());
+                    mPresenter.btnLogin(username, password, mSwitchLogin, checkBox.isChecked());
                 }
                 break;
             case R.id.txvi_loginactivity_register:                                                  // 新用户注册
@@ -234,8 +242,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 }
                 edtTxtPassword.setSelection(edtTxtPassword.length());
                 break;
-            case R.id.txvi_loginactivity_forgotpassword:                                            // 忘记密码
+            case R.id.txvi_loginactivity_forgotpassword:                                            // 忘记密码or获取验证码
+                if (mSwitchLogin) {
+                    if (mPresenter != null) {
+                        mPresenter.loginSMS(edtTxtUsername.getText().toString().trim(), checkBox.isChecked());
+                    }
+                } else {
 //                ActivityUtils.startActivityForResult(this, ForgotPasswordActivity.class, Setting.FORGOTPASSWORDACTIVITY_REQUESTCODE);
+                }
                 break;
         }
     }
@@ -248,7 +262,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             mSwitchLogin = false;
             // 提示可以切换短信验证码
             txviSwitchLogin.setText("验证码登录");
-//            btnLogin.setText("登录");
             imgviPwdsee.setVisibility(View.VISIBLE);
             txviForgotPassword.setText("忘记密码");
             edtTxtPassword.setTransformationMethod(new PasswordTransformationMethod());
@@ -256,7 +269,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             mSwitchLogin = true;
             // 提示可以切换账号密码登录
             txviSwitchLogin.setText("密码登录");
-//            btnLogin.setText("获取验证码");
             imgviPwdsee.setVisibility(View.GONE);
             txviForgotPassword.setText("获取验证码");
             edtTxtPassword.setTransformationMethod(new HideReturnsTransformationMethod());
@@ -323,17 +335,25 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         } else {
             ActivityUtils.startActivity(MainActivity.class);
         }
+
+        // 关闭当前窗口
+        killMyself();
     }
 
     @Override
-    public void jumbToQuickLogin(String mobile) {
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            bundle.putBoolean("isLoginJump", true);
-            bundle.putString("mobile", mobile);
-//            ActivityUtils.startActivity(bundle, QuickLoginActivity.class);
+    public void setTipsValue(Long str) {
+        txviForgotPassword.setText(str + "s");
+    }
+
+    @Override
+    public void setBtnEnabled(boolean val) {
+        if (val) {
+            // 倒计时完毕
+            txviForgotPassword.setText("发送验证码");
+            txviForgotPassword.setOnClickListener(this);
         } else {
-//            ActivityUtils.startActivity(QuickLoginActivity.class);
+            // 正在倒计时
+            txviForgotPassword.setOnClickListener(null);
         }
     }
 
