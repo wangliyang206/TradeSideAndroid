@@ -62,6 +62,9 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
         // 定时清理日志
         initLog();
 
+        // 测试Bugly上报
+//        CrashReport.testJavaCrash();
+
         // 验证Token
         validToken();
     }

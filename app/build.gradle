@@ -53,9 +53,12 @@ android {
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
 
         ndk {
+            //设置支持的SO库架构
             //选择要添加的对应cpu类型的.so库。
             //热修复支持五种
-            abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'x86', 'x86_64'
+//            abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'x86', 'x86_64'
+            // Bugly支持一种
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
 
         //是否使用本地测试数据
@@ -106,7 +109,7 @@ android {
             buildConfigField "boolean", "USE_CANARY", "true"
 
             // 腾讯Bugly AppId
-            buildConfigField "String", "BUGLY_APP_ID", "\"09b10840f5\""
+            buildConfigField "String", "BUGLY_APP_ID", "\"10a9282065\""
 
             // SP文件名称
             buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedTradeSideTest\""
@@ -148,7 +151,7 @@ android {
             buildConfigField "boolean", "USE_CANARY", "false"
 
             // 腾讯Bugly AppId
-            buildConfigField "String", "BUGLY_APP_ID", "\"ffa3afe589\""
+            buildConfigField "String", "BUGLY_APP_ID", "\"344f68ff0d\""
 
             // SP文件名称
             buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedTradeSide\""
