@@ -12,7 +12,7 @@
     <color name="colorStatusBar">#FFFFFF</color>
 
     <!-- 背景颜色 -->
-    <color name="layout_bg_color">#FFFFFF</color>
+    <color name="layout_bg_color">#F2F9FB</color>
     <color name="fragment_bg_color">#F8F6F9</color>
     <color name="frame_bg_color">#F5F5F5</color>
 
@@ -44,5 +44,9 @@
     <!-- 按钮点击颜色 -->
     <color name="button_press_bak">#8ec31e</color>
     <!-- 按钮正常颜色 -->
-    <color name="button_normal_bak">#69CA9C</color>
+    <color name="button_normal_bak">#46C788</color>
+
+    <!-- 登录分隔线 -->
+    <color name="login_line_color">#888888</color>
+    <color name="login_txt_color">#0F77F2</color>
 </resources>

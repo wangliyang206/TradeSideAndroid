@@ -303,4 +303,6 @@ dependencies {
     }
     // 二维码
     api "com.google.zxing:core:3.3.0"
+    // 检查更新
+    implementation project(path: ':checkupdatelib')
 }

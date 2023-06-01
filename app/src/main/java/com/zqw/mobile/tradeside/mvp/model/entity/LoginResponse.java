@@ -16,20 +16,24 @@ public class LoginResponse {
     /* 用户id */
     private String userId = "";
 
-    /* 用户名 */
-    private String loginName = "";
+    /* 姓名 */
+    private String userName = "";
 
     /* 手机号 */
     private String userPhone = "";
 
+    /* 头像 */
+    private String accountImage = "";
+
     public LoginResponse() {
     }
 
-    public LoginResponse(String token, String userId, String loginName, String userPhone) {
+    public LoginResponse(String token, String userId, String userName, String userPhone, String accountImage) {
         this.token = token;
         this.userId = userId;
-        this.loginName = loginName;
+        this.userName = userName;
         this.userPhone = userPhone;
+        this.accountImage = accountImage;
     }
 
     public String getToken() {
@@ -48,12 +52,12 @@ public class LoginResponse {
         this.userId = userId;
     }
 
-    public String getLoginName() {
-        return loginName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserPhone() {
@@ -62,5 +66,13 @@ public class LoginResponse {
 
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
+    }
+
+    public String getAccountImage() {
+        return accountImage;
+    }
+
+    public void setAccountImage(String accountImage) {
+        this.accountImage = accountImage;
     }
 }

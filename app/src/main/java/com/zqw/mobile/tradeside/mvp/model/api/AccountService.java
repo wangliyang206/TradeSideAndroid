@@ -35,6 +35,10 @@ public interface AccountService {
     @POST("member/validToken")
     Observable<GsonResponse<LoginResponse>> validToken(@Body GsonRequest<Map<String, Object>> request);
 
+    //登录-获取短信验证码
+    @POST("member/loginSMS")
+    Observable<GsonResponse<CommonResponse>> loginSMS(@Body GsonRequest<Map<String, String>> request);
+
     //发送短信验证码
     @POST("member/forgetPassword")
     Observable<GsonResponse<CommonResponse>> sendSms(@Body GsonRequest<Map<String, Object>> request);

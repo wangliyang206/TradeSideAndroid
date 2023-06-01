@@ -95,7 +95,7 @@ public final class AccountManager {
      */
     public void updateAccountInfo(LoginResponse loginResponse) {
         spHelper.put(USERID, loginResponse.getUserId());
-        spHelper.put(USER_NAME, loginResponse.getLoginName());
+        spHelper.put(USER_NAME, loginResponse.getUserName());
         spHelper.put(PHOTOURL, "");
         spHelper.put(RECYCLE_PHONE, loginResponse.getUserPhone());
 
