@@ -135,6 +135,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 // 从注册过来的
                 setUsernName(phone);
             }
+
+            String password = bundle.getString("password");
+            if (!TextUtils.isEmpty(password)) {
+                setPassword(password);
+            }
         }
     }
 
@@ -176,11 +181,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         edtTxtPassword.addTextChangedListener(this);
 
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                btnLogin.setEnabled(true);
-            } else {
-                btnLogin.setEnabled(false);
-            }
+            btnLogin.setEnabled(isChecked);
         });
 
         // 初始化Loading对话框
@@ -215,7 +216,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 }
                 break;
             case R.id.txvi_loginactivity_register:                                                  // 新用户注册
-//                ActivityUtils.startActivity(RegisterActivity.class);
+                ActivityUtils.startActivity(RegisterActivity.class);
                 break;
             case R.id.txvi_loginactivity_switchlogin:                                               // 切换登录方式：短信验证码登录、账号密码登录
                 switchLogin();

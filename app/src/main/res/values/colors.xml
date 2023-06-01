@@ -49,4 +49,7 @@
     <!-- 登录分隔线 -->
     <color name="login_line_color">#888888</color>
     <color name="login_txt_color">#0F77F2</color>
+
+    <!-- 分割线 -->
+    <color name="line_input_color">#d0d0d0</color>                                                  <!-- 分隔线(填写信息) -->
 </resources>

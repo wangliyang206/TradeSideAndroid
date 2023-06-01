@@ -2,7 +2,6 @@ package com.zqw.mobile.tradeside.mvp.model.api;
 
 import com.jess.arms.cj.GsonRequest;
 import com.jess.arms.cj.GsonResponse;
-import com.zqw.mobile.tradeside.mvp.model.entity.AppUpdate;
 import com.zqw.mobile.tradeside.mvp.model.entity.CommonResponse;
 import com.zqw.mobile.tradeside.mvp.model.entity.LoginResponse;
 
@@ -52,11 +51,10 @@ public interface AccountService {
     @POST("member/resetPwd")
     Observable<GsonResponse<CommonResponse>> forgotPassword(@Body GsonRequest<Map<String, Object>> request);
 
+    //注册
+    @POST("member/register")
+    Observable<GsonResponse<CommonResponse>> register(@Body GsonRequest<Map<String, Object>> request);
     /*-----------------------------------------------------------------------通用-----------------------------------------------------------------------*/
-
-    // 获取APP版本信息
-    @POST("system/getVersion")
-    Observable<GsonResponse<AppUpdate>> getVersion(@Body GsonRequest<Map<String, Object>> request);
 
     // 下载
     @Streaming
