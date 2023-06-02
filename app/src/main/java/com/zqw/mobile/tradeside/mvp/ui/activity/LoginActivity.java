@@ -112,6 +112,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         if (mDialog != null) {
             this.mDialog.dismiss();
         }
+
+        if (isExitAPP) {
+            if (mPresenter != null) {
+                mPresenter.stopLocationService();
+            }
+        }
         super.onDestroy();
         this.mDialog = null;
 
@@ -167,10 +173,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void initData(@Nullable Bundle savedInstanceState) {
         // 不需要默认事件
         getIntent().putExtra("isInitToolbar", true);
-        // 获取传过来的值
-        if (mPresenter != null) {
-            mPresenter.getBundleValues(getIntent().getExtras());
-        }
+
         SpannableString agreement = new SpannableString(getString(R.string.login_agreement_tips));
         agreement.setSpan(new MyClickableSpan("《服务协议》"), 7, 13, SpannableString.SPAN_INCLUSIVE_INCLUSIVE);
         agreement.setSpan(new MyClickableSpan("《隐私政策》"), 14, 20, SpannableString.SPAN_INCLUSIVE_INCLUSIVE);
@@ -348,13 +351,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void jumbToMain() {
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            bundle.putBoolean("isLoginJump", true);
-            ActivityUtils.startActivity(bundle, MainActivity.class);
-        } else {
-            ActivityUtils.startActivity(MainActivity.class);
-        }
+        ActivityUtils.startActivity(MainActivity.class);
 
         // 关闭当前窗口
         killMyself();

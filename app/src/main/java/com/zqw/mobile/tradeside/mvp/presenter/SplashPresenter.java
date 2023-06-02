@@ -33,7 +33,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
-    AccountManager accountManager;
+    AccountManager mAccountManager;
 
     @Inject
     public SplashPresenter(SplashContract.Model model, SplashContract.View rootView) {
@@ -43,7 +43,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
     public void initData() {
         // 是否使用隐私政策待确定，确定使用时在放开
 //        mRootView.approved();
-        if (accountManager.getPrivacyPolicy()) {
+        if (mAccountManager.getPrivacyPolicy()) {
             // 已同意 - 获取权限
             mRootView.approved();
         } else {
@@ -65,6 +65,9 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
         // 测试Bugly上报
 //        CrashReport.testJavaCrash();
 
+        // 初始APP升级提醒数据设置
+        mAccountManager.setUpgrade(true);
+
         // 验证Token
         validToken();
     }
@@ -85,19 +88,19 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
      */
     private void initLog() {
         if (!BuildConfig.DEBUG) {
-            int num = accountManager.getStartTime();
+            int num = mAccountManager.getStartTime();
             if (num >= 50) {
                 //清理日志
                 ThreadUtils.getFixedPool(3).execute(() -> {
                     try {
                         FileUtils.delete(Constant.LOG_PATH + "log.txt");
-                        accountManager.setStartTime(0);
+                        mAccountManager.setStartTime(0);
                     } catch (Exception ignored) {
                     }
                 });
             } else {
                 //不到清理日期，暂时先增加APP启动次数
-                accountManager.setStartTime(++num);
+                mAccountManager.setStartTime(++num);
             }
         }
     }
@@ -107,8 +110,8 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
      */
     private void validToken() {
         //1、验证Token和Userid是否存在，存在表示此次并不是第一次登录；
-        String userid = accountManager.getUserid();
-        String token = accountManager.getToken();
+        String userid = mAccountManager.getUserid();
+        String token = mAccountManager.getToken();
 
         if (TextUtils.isEmpty(token) || TextUtils.isEmpty(userid)) {
             RxUtils.startDelayed(1, mRootView, () -> mRootView.jumbToLogin());
@@ -133,7 +136,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
                         @Override
                         public void onNext(LoginResponse loginResponse) {
                             if (loginResponse != null) {
-                                accountManager.updateAccountInfo(loginResponse);
+                                mAccountManager.updateAccountInfo(loginResponse);
                             }
                             mRootView.jumbToMain();
                         }
@@ -144,6 +147,6 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
-        this.accountManager = null;
+        this.mAccountManager = null;
     }
 }

@@ -18,7 +18,7 @@ android {
         // 正式
         release {
             // 指定签名文件的别名
-            keyAlias 'TradeSide'
+            keyAlias 'TradeSideAndroid'
 
             // 指定签名文件的别名配对密码
             keyPassword '123456789'
@@ -122,6 +122,7 @@ android {
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name_debug"
+                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key_debug"
                                     , ALICLOUD_APP_ID    : "@string/alicloud_app_id_debug"
                                     , ALICLOUD_APP_SECRET: "@string/alicloud_app_secret_debug"
                                     , ALICLOUD_APP_RSA   : "@string/alicloud_app_rsa_debug"]
@@ -161,6 +162,7 @@ android {
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name"
+                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key"
                                     , ALICLOUD_APP_ID    : "@string/alicloud_app_id"
                                     , ALICLOUD_APP_SECRET: "@string/alicloud_app_secret"
                                     , ALICLOUD_APP_RSA   : "@string/alicloud_app_rsa"]
@@ -305,4 +307,11 @@ dependencies {
     api "com.google.zxing:core:3.3.0"
     // 检查更新
     implementation project(path: ':checkupdatelib')
+    // 百度地图
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Location_All:9.3.7'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Map-Navi:7.5.4'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Search:7.5.4'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Util:7.5.4'
+//    implementation 'com.baidu.lbsyun:NaviTts:3.2.8'
+    implementation files('libs/com.baidu.tts_2.6.2.2.20200629_44818d4.jar')
 }

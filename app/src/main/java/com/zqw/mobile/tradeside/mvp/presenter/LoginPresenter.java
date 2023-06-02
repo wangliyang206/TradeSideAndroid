@@ -2,17 +2,18 @@ package com.zqw.mobile.tradeside.mvp.presenter;
 
 import static com.zqw.mobile.tradeside.BuildConfig.IS_DEBUG_DATA;
 
-import android.os.Bundle;
-
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.OnLifecycleEvent;
 
 import com.blankj.utilcode.util.RegexUtils;
 import com.jess.arms.di.scope.ActivityScope;
+import com.jess.arms.integration.cache.Cache;
+import com.jess.arms.integration.cache.IntelligentCache;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.DeviceUtils;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.tradeside.app.global.AccountManager;
+import com.zqw.mobile.tradeside.app.service.LocationService;
 import com.zqw.mobile.tradeside.app.utils.RxUtils;
 import com.zqw.mobile.tradeside.mvp.contract.LoginContract;
 import com.zqw.mobile.tradeside.mvp.model.entity.AppUpdate;
@@ -44,24 +45,15 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
     RxErrorHandler mErrorHandler;
     @Inject
     AccountManager mAccountManager;
-    /**
-     * 当前状态是否是首次启动登录
-     */
-    private Boolean isStartLogin = true;
+    @Inject
+    Cache<String, Object> extras;
+
+    // 定位对象
+    private LocationService locationService;
 
     @Inject
     public LoginPresenter(LoginContract.Model model, LoginContract.View rootView) {
         super(model, rootView);
-    }
-
-
-    /**
-     * 获取传进来的值
-     */
-    public void getBundleValues(Bundle bundle) {
-        if (bundle != null) {
-            isStartLogin = bundle.getBoolean("isStartLogin", true);
-        }
     }
 
     /**
@@ -69,6 +61,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
      */
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     void onCreate() {
+        locationService = ((LocationService) extras.get(IntelligentCache.getKeyOfKeep(LocationService.class.getName())));
+
         if (IS_DEBUG_DATA) {
             mRootView.setUsernName("15032134297");
             mRootView.setPassword("123456");
@@ -78,7 +72,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
         }
 
         //APP升级更新
-        if (isStartLogin)
+        if (mAccountManager.getUpgrade())
             checkUpdateManager();
     }
 
@@ -267,6 +261,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
      * APP升级更新
      */
     private void checkUpdateManager() {
+        // 提醒过了
+        mAccountManager.setUpgrade(false);
         if (IS_DEBUG_DATA) {
             AppUpdate appUpdate = new AppUpdate(112, "1.1.2", "小的来了", "小的来了.apk", "http:\\/\\/buypb.e1.luyouxia.net:28708\\/imgs\\/update\\/recycleapp-debug-1.1.2.apk", 0, 18, "1.更新了好多东西\n1.更新了好多东西\n1.更新了好多东西");
             if (haveNew(appUpdate)) {
@@ -311,10 +307,21 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
         return haveNew;
     }
 
+    /**
+     * 关闭APP时关闭定位
+     */
+    public void stopLocationService() {
+        if (locationService != null)
+            locationService.stop();
+    }
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
         this.mAccountManager = null;
+        this.extras = null;
+        this.locationService = null;
     }
 }

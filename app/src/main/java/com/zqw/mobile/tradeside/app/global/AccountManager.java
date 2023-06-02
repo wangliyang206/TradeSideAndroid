@@ -45,6 +45,25 @@ public final class AccountManager {
      * APP启动次数(达到一定次数后清理日志)
      */
     private final String START_TIME = "startTime";
+
+    // 定位 - 经度
+    private static final String LONGITUDE = "Longitude";
+    // 定位 - 纬度
+    private static final String LATITUDE = "Latitude";
+    // 定位 - 地址
+    private static final String ADDRESS = "Address";
+    // 定位 - 半径
+    private static final String RADIUS = "Radius";
+    // 定位 - 省
+    private static final String PROVINCE = "Province";
+    // 定位 - 市
+    private static final String CITY = "City";
+    // 定位 - 区
+    private static final String DISTRICT = "District";
+
+    // 选择城市
+    private static final String SELECT_CITY = "SelectCity";
+
     /**
      * 是否同意隐私政策
      */
@@ -265,4 +284,46 @@ public final class AccountManager {
     public int getStartTime() {
         return spHelper.getPref(START_TIME, 0);
     }
+
+    /**
+     * 更新定位信息(经纬度)
+     *
+     * @param latitude  纬度
+     * @param longitude 经度
+     * @param address   详细地址
+     */
+    public void updateLocation(double latitude, double longitude, float radius, String province, String city, String district, String address) {
+        spHelper.put(LATITUDE, String.valueOf(latitude));
+        spHelper.put(LONGITUDE, String.valueOf(longitude));
+        spHelper.put(RADIUS, radius);
+
+        if (!TextUtils.isEmpty(province))
+            spHelper.put(PROVINCE, province);
+        if (!TextUtils.isEmpty(city))
+            spHelper.put(CITY, city);
+        if (!TextUtils.isEmpty(district))
+            spHelper.put(DISTRICT, district);
+
+        if (!TextUtils.isEmpty(address))
+            spHelper.put(ADDRESS, address);
+    }
+
+    /**
+     * 获取经度
+     *
+     * @return 回调
+     */
+    public String getLongitude() {
+        return spHelper.getPref(LONGITUDE, "");
+    }
+
+    /**
+     * 获取纬度
+     *
+     * @return 回调
+     */
+    public String getLatitude() {
+        return spHelper.getPref(LATITUDE, "");
+    }
+
 }
