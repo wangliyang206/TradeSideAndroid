@@ -52,4 +52,10 @@
 
     <!-- 分割线 -->
     <color name="line_input_color">#d0d0d0</color>                                                  <!-- 分隔线(填写信息) -->
+
+    <!-- Tab颜色 -->
+    <color name="tab_bg_color">#ffffff</color>
+    <color name="tab_line_above">#e2e2e2</color>
+    <color name="tab_text_normal">#888888</color>
+    <color name="tab_text_press">#46C788</color>
 </resources>

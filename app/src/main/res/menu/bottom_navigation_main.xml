@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_warehouse"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/main_tab_home"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_tradinghall"
+        android:enabled="true"
+        android:icon="@drawable/ic_tradinghall_black_24dp"
+        android:title="@string/main_tab_tradinghall"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_me"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/main_tab_me"
+        app:showAsAction="ifRoom" />
+
+</menu>
