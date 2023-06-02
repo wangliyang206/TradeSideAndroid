@@ -78,4 +78,11 @@ public class TradingHallFragment extends BaseFragment<TradingHallPresenter> impl
     public void killMyself() {
 
     }
+
+    /**
+     * 双击刷新
+     */
+    public void onDoubleClick() {
+
+    }
 }

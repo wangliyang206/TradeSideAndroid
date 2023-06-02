@@ -79,8 +79,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         // 注销服务广播
         this.unregisterReceiver(mReceiver);
         this.mReceiver = null;
-        mTradingHallNum.clearNumber();
-        mTradingHallNum = null;
+        this.mTradingHallNum = null;
         super.onDestroy();
         this.mNavigation = null;
         this.tabHome = null;
@@ -94,7 +93,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
      * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
      */
     public int useStatusBarColor() {
-        return -1;
+        return getResources().getColor(R.color.layout_bg_color);
     }
 
     /**
@@ -168,6 +167,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
      */
     private void initUnread() {
         mTradingHallNum = mNavigation.getOrCreateBadge(R.id.action_tradinghall);
+        // 默认隐藏
+        mTradingHallNum.setVisible(false);
     }
 
     /**
@@ -314,7 +315,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             if (index == FRAGMENT_HOME) {
                 tabHome.onDoubleClick();
             } else if (index == FRAGMENT_TRADINGHALL) {
-//                tabTradingHall.onDoubleClick();
+                tabTradingHall.onDoubleClick();
             }
         } else {
             firstClickTime = secondClickTime;
