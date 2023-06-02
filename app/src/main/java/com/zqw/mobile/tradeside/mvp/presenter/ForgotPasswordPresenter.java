@@ -2,18 +2,15 @@ package com.zqw.mobile.tradeside.mvp.presenter;
 
 import static com.zqw.mobile.tradeside.BuildConfig.IS_DEBUG_DATA;
 
-import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.tradeside.app.utils.RxUtils;
-import com.zqw.mobile.tradeside.mvp.contract.RegisterContract;
+import com.zqw.mobile.tradeside.mvp.contract.ForgotPasswordContract;
 import com.zqw.mobile.tradeside.mvp.model.entity.CommonResponse;
-import com.zqw.mobile.tradeside.mvp.ui.activity.LoginActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,13 +25,13 @@ import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 
 /**
  * ================================================
- * Description:注册
+ * Description:忘记密码
  * <p>
  * Created by MVPArmsTemplate on 2023/06/01 17:58
  * ================================================
  */
 @ActivityScope
-public class RegisterPresenter extends BasePresenter<RegisterContract.Model, RegisterContract.View> {
+public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordContract.Model, ForgotPasswordContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
 
@@ -44,14 +41,12 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
     private final int mobileCheckCodeTime = 60;// 1分钟
 
     @Inject
-    public RegisterPresenter(RegisterContract.Model model, RegisterContract.View rootView) {
+    public ForgotPasswordPresenter(ForgotPasswordContract.Model model, ForgotPasswordContract.View rootView) {
         super(model, rootView);
     }
 
     /**
      * 发送验证码
-     *
-     * @param account 手机号
      */
     public void btnSendSMSOnClick(String account) {
         if (TextUtils.isEmpty(account)) {
@@ -67,7 +62,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
         if (IS_DEBUG_DATA) {
             onCountDown();
         } else {
-            mModel.verificationCode(account)
+            mModel.sendSms(account)
                     .compose(RxUtils.applySchedulers(mRootView))                                    // 切换线程
                     .subscribe(new ErrorHandleSubscriber<CommonResponse>(mErrorHandler) {
                         @Override
@@ -86,6 +81,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
         }
 
     }
+
 
     /**
      * 倒计时
@@ -132,58 +128,40 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
     }
 
     /**
-     * 验证短信
+     * 提交
      */
-    public void btnSubmit(String name, String account, String password, String verifyCode) {
-        // 改变按钮颜色
-        mRootView.onDisableClick();
+    public void btnSubmit(String account, String verifyCode, String password, String confimPwd) {
+        if (checkInput(account, verifyCode, password, confimPwd)) {
+            // 改变按钮颜色
+            mRootView.onDisableClick();
 
-        if (IS_DEBUG_DATA) {
-            onSucc(account, password);
-        } else {
-            mModel.register(name, account, password, verifyCode)
-                    .compose(RxUtils.applySchedulers(mRootView))                                    // 切换线程
-                    .subscribe(new ErrorHandleSubscriber<CommonResponse>(mErrorHandler) {
-                        @Override
-                        public void onError(Throwable t) {
-                            super.onError(t);
-                            mRootView.onEnableClick();
-                        }
+            if (IS_DEBUG_DATA) {
+                mRootView.onResetSuccess();
+            } else {
+                mModel.forgotPassword(account, verifyCode, password)
+                        .compose(RxUtils.applySchedulers(mRootView))                                // 切换线程
+                        .subscribe(new ErrorHandleSubscriber<CommonResponse>(mErrorHandler) {
+                            @Override
+                            public void onError(Throwable t) {
+                                super.onError(t);
+                                mRootView.onResetError();
+                            }
 
-                        @Override
-                        public void onNext(CommonResponse commonResponse) {
-                            onSucc(account, password);
-                        }
-                    });
+                            @Override
+                            public void onNext(CommonResponse commonResponse) {
+                                mRootView.onResetSuccess();
+                            }
+                        });
+            }
         }
     }
-
-    /**
-     * 注册成功
-     */
-    private void onSucc(String account, String password) {
-        Bundle bundle = new Bundle();
-        bundle.putString("phone", account);
-        bundle.putString("password", password);
-        ActivityUtils.startActivity(bundle, LoginActivity.class);
-    }
-
 
     /**
      * 用户输入有效性验证
      *
      * @return 校验是否通过
      */
-    public boolean checkInput(String name, String account, String password, String verifyCode, boolean isCheckBox) {
-        if (!isCheckBox) {
-            mRootView.showMessage("请先阅读并同意协议");
-            return false;
-        }
-
-        if (TextUtils.isEmpty(name)) {
-            mRootView.showMessage("请输入姓名");
-            return false;
-        }
+    private boolean checkInput(String account, String verifyCode, String password, String confimPwd) {
 
         if (TextUtils.isEmpty(account)) {
             mRootView.showMessage("请输入手机号");
@@ -195,16 +173,25 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
             return false;
         }
 
-        if (TextUtils.isEmpty(password)) {
-            mRootView.showMessage("请输入密码");
-            return false;
-        }
-
         if (TextUtils.isEmpty(verifyCode)) {
             mRootView.showMessage("请输入验证码");
             return false;
         }
 
+        if ("".equals(password)) {
+            mRootView.showMessage("您输入的密码不能为空！");
+            return false;
+        }
+
+        if (password.length() < 6 || password.length() > 20) {
+            mRootView.showMessage("密码长度为6-20位，建议字母与数字组合");
+            return false;
+        }
+
+        if (!password.equals(confimPwd)) {
+            mRootView.showMessage("您两次输入的密码不一致");
+            return false;
+        }
         return true;
     }
 

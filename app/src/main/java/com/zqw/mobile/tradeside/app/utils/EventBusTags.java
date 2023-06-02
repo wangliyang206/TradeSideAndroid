@@ -30,20 +30,10 @@ package com.zqw.mobile.tradeside.app.utils;
 public interface EventBusTags {
     //####################################################首页####################################################
     String HOME_TAG = "Home_tag";
-    String SALESDELIVERYORDER_TAG = "SalesDeliveryOrder_tag";
-    String NEWCUSTOMERVISIT_TAG = "NewCustomerVisit_tag";
-    String RECYCLEORDER_TAG = "RecycleOrder_tag";
+    String FORGOTPASSWORD_TAG = "ForgotPassword_tag";
 
     // 登录成功
     int LOGIN_SUCC_TAG = 0;
-    // 1、弹出筛选；2、拜访记录》筛选》业务员；
-    int OPEN_FILTER_TAG = 1;
-    // 1、打开侧滑；2、拜访记录详情状态变更后刷新列表。
-    int OPEN_MENU_TAG = 2;
-    // 切换城市
-    int SWITCH_CITIES_TAG = 3;
-    // 活体检测返回
-    int RETURN_LIVENESS_DETECTION = 4;
-    // 一笔画完游戏 中 清空数据库操作
-    int ONE_LINE_TO_END_CLEAR = 5;
+    // 通用返回
+    int COMM_RESULT_TAG = 1;
 }

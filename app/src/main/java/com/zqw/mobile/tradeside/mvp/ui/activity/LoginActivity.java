@@ -39,11 +39,16 @@ import com.zqw.mobile.tradeside.R;
 import com.zqw.mobile.tradeside.app.dialog.PopupTipsDialog;
 import com.zqw.mobile.tradeside.app.global.AccountManager;
 import com.zqw.mobile.tradeside.app.global.Constant;
+import com.zqw.mobile.tradeside.app.utils.EventBusTags;
 import com.zqw.mobile.tradeside.app.utils.MyClickableSpan;
 import com.zqw.mobile.tradeside.di.component.DaggerLoginComponent;
 import com.zqw.mobile.tradeside.mvp.contract.LoginContract;
 import com.zqw.mobile.tradeside.mvp.model.entity.AppUpdate;
+import com.zqw.mobile.tradeside.mvp.model.entity.MainEvent;
 import com.zqw.mobile.tradeside.mvp.presenter.LoginPresenter;
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
 
 import javax.inject.Inject;
 
@@ -188,6 +193,20 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         mDialog = new MaterialDialog.Builder(this).content(R.string.loginactivity_login_processtips).progress(true, 0).build();
     }
 
+    /**
+     * 忘记密码    回调
+     */
+    @Subscriber(tag = EventBusTags.FORGOTPASSWORD_TAG, mode = ThreadMode.POST)
+    private void eventBusEvent(MainEvent mainEvent) {
+        if (mainEvent.getCode() == EventBusTags.COMM_RESULT_TAG) {
+            setUsernName(mainEvent.getMsg());
+
+            edtTxtPassword.setText("");
+            edtTxtPassword.setFocusable(true);
+            edtTxtPassword.setFocusableInTouchMode(true);
+            edtTxtPassword.requestFocus();
+        }
+    }
 
     /**
      * 点击事件
@@ -249,7 +268,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                         mPresenter.loginSMS(edtTxtUsername.getText().toString().trim(), checkBox.isChecked());
                     }
                 } else {
-//                ActivityUtils.startActivityForResult(this, ForgotPasswordActivity.class, Setting.FORGOTPASSWORDACTIVITY_REQUESTCODE);
+                    ActivityUtils.startActivity(ForgotPasswordActivity.class);
                 }
                 break;
         }
