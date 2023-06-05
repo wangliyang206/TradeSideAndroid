@@ -36,4 +36,6 @@ public interface EventBusTags {
     int LOGIN_SUCC_TAG = 0;
     // 通用返回
     int COMM_RESULT_TAG = 1;
+    // 切换城市
+    int SWITCH_CITIES_TAG = 2;
 }

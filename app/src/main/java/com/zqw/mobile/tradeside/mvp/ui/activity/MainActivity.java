@@ -89,14 +89,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     /**
-     * 根据主题使用不同的颜色。
-     * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
-     */
-    public int useStatusBarColor() {
-        return getResources().getColor(R.color.layout_bg_color);
-    }
-
-    /**
      * 关闭滑动返回
      */
     @Override

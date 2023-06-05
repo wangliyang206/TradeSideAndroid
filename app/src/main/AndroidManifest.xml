@@ -6,13 +6,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 写外置存储。如果开发者使用了离线地图，并且数据写在外置存储区域，则需要申请该权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 写外置存储。如果开发者使用了离线地图，并且数据写在外置存储区域，则需要申请该权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".app.global.SophixStubApplication"
@@ -23,7 +21,11 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+        <activity
+            android:name=".mvp.ui.activity.CityPickerActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.ForgotPasswordActivity"
             android:screenOrientation="portrait" />
@@ -35,8 +37,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -64,12 +65,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"
                 tools:replace="android:resource" />
-        </provider>
-        <!-- arms配置 -->
+        </provider> <!-- arms配置 -->
         <meta-data
             android:name="com.zqw.mobile.tradeside.app.global.GlobalConfiguration"
-            android:value="ConfigModule" />
-        <!-- 阿里云Sophix热修复 -->
+            android:value="ConfigModule" /> <!-- 阿里云Sophix热修复 -->
         <meta-data
             android:name="com.taobao.android.hotfix.IDSECRET"
             android:value="${ALICLOUD_APP_ID}" />
@@ -78,17 +77,14 @@
             android:value="${ALICLOUD_APP_SECRET}" />
         <meta-data
             android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="${ALICLOUD_APP_RSA}" />
-        <!-- 百度地图 API KEY -->
+            android:value="${ALICLOUD_APP_RSA}" /> <!-- 百度地图 API KEY -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="${BAIDU_API_KEY}" />
-        <!-- 百度地图服务 -->
+            android:value="${BAIDU_API_KEY}" /> <!-- 百度地图服务 -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" />
-        <!-- 千万别忘了加这一句。支持api level 28 以上编译 -->
+            android:process=":remote" /> <!-- 千万别忘了加这一句。支持api level 28 以上编译 -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />

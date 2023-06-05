@@ -63,6 +63,7 @@ public final class AccountManager {
 
     // 选择城市
     private static final String SELECT_CITY = "SelectCity";
+    private static final String SELECT_CITY_ID = "SelectCityId";
 
     /**
      * 是否同意隐私政策
@@ -326,4 +327,67 @@ public final class AccountManager {
         return spHelper.getPref(LATITUDE, "");
     }
 
+    /**
+     * 获得省份
+     */
+    public String getProvince() {
+        return spHelper.getPref(PROVINCE, "");
+    }
+
+    /**
+     * 获得城市
+     */
+    public String getCity() {
+        return spHelper.getPref(CITY, "");
+    }
+
+    /**
+     * 获得区域
+     */
+    public String getDistrict() {
+        return spHelper.getPref(DISTRICT, "");
+    }
+
+    /**
+     * 获取定位地址
+     *
+     * @return 回调
+     */
+    public String getAddress() {
+        return spHelper.getPref(ADDRESS, "");
+    }
+
+    /**
+     * 选择城市
+     */
+    public String getSelectCity() {
+        String val = spHelper.getPref(SELECT_CITY, "");
+
+        // 如果等于空，则显示定位城市
+        if (TextUtils.isEmpty(val)) {
+            val = getCity();
+        }
+        return val;
+    }
+
+    /**
+     * 设置选择城市
+     */
+    public void setSelectCity(String val) {
+        spHelper.put(SELECT_CITY, val);
+    }
+
+    /**
+     * 获取城市id
+     */
+    public String getSelectCityId() {
+        return spHelper.getPref(SELECT_CITY_ID, "");
+    }
+
+    /**
+     * 设置城市id
+     */
+    public void setSelectCityId(String val) {
+        spHelper.put(SELECT_CITY_ID, val);
+    }
 }

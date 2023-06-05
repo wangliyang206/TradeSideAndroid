@@ -213,7 +213,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
-        android:background="@drawable/log_in_button_selector"
+        android:background="@drawable/btn_bg_selector"
         android:enabled="false"
         android:gravity="center"
         android:paddingLeft="8dp"

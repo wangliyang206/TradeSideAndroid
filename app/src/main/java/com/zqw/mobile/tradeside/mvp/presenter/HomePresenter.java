@@ -1,6 +1,7 @@
 package com.zqw.mobile.tradeside.mvp.presenter;
 
 import android.app.Application;
+import android.text.TextUtils;
 
 import com.jess.arms.di.scope.FragmentScope;
 import com.jess.arms.mvp.BasePresenter;
@@ -61,14 +62,14 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
 
                     @Override
                     public void onNext(Long aLong) {
-//                        Timber.i("###onNext#address=%s", mAccountManager.getAddress());
-//                        if (!TextUtils.isEmpty(mAccountManager.getAddress())) {
-//                            // 获取定位成功
-//                            getHome();
-//                            Timber.i("###initHome-Dispose");
-//                            // 跳转循环
-//                            mDisposable.dispose();
-//                        }
+                        Timber.i("###onNext#address=%s", mAccountManager.getAddress());
+                        if (!TextUtils.isEmpty(mAccountManager.getAddress())) {
+                            // 获取定位成功
+                            getHome();
+                            Timber.i("###initHome-Dispose");
+                            // 跳转循环
+                            mDisposable.dispose();
+                        }
                     }
 
                     @Override
@@ -90,11 +91,8 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
      */
     private void loadSearchHot() {
         List<String> list = new ArrayList<>();
-        list.add("拜访");
-        list.add("门店");
-        list.add("回收员");
-        list.add("回收商");
-        list.add("冶炼厂");
+        list.add("铅产业全新模式！全新平台！");
+        list.add("干电池");
         mRootView.homeSearchHot(list);
     }
 
@@ -102,36 +100,14 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
      * 获取首页数据
      */
     public void getHome() {
-        // 设置头像
-        mRootView.homeSetAvatar(mAccountManager.getPhotoUrl());
         // 拿到定位数据并进行展示
-//        if (TextUtils.isEmpty(mAccountManager.getSelectCityId())) {
-//            mRootView.homeSetLocateAdd("全部区域");
-//        } else {
-//            mRootView.homeSetLocateAdd(mAccountManager.getSelectCity());
-//        }
-//        // 在服务没有开启时才选择开启(定时上传任务)
-//        if (!TimingTaskService.isServiceWork(mApplication, "com.zqw.mobile.operation.app.service.TimingTaskService")) {
-//            TimingTaskService.startAction(mApplication);
-//        }
-//        // 这里根据角色权限控制首页都显示哪些，隐藏哪些
-//        // 问题投诉、拜访、门店管理、订单
-//        mRootView.setViewControlPanelOne(
-//                mModel.checkRole("orderComplaints", ""),
-//                mModel.checkRole("visitManagement", ""),
-//                mModel.checkRole("storeManag", ""),
-//                mModel.checkRole("orderManag", "")
-//        );
-//
-//        // 这里根据角色权限控制首页都显示哪些，隐藏哪些
-//        // 门店注册、特约商户注册、资质商
-//        mRootView.setViewControlPanelTwo(
-//                mModel.checkRole("storeInto", ""),
-//                mModel.checkRole("wxSpecialMerchant", ""),
-//                mModel.checkRole("orgInto", "")
-//        );
-//        // 加载热门搜索
-//        loadSearchHot();
+        if (TextUtils.isEmpty(mAccountManager.getSelectCityId())) {
+            mRootView.homeSetLocateAdd("全部区域");
+        } else {
+            mRootView.homeSetLocateAdd(mAccountManager.getSelectCity());
+        }
+        // 加载热门搜索
+        loadSearchHot();
 //        // 请求首页数据
 //        if (IS_DEBUG_DATA) {
 //            mRootView.loadPerformanceStatistics(new PerformanceStatisticsResponse(7, 7, 30, 30));

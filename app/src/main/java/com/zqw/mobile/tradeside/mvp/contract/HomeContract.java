@@ -24,9 +24,6 @@ public interface HomeContract {
         // 首页定位失败
         void homemPositioningFailure();
 
-        // 设置头像
-        void homeSetAvatar(String url);
-
         // 设置城市
         void homeSetLocateAdd(String city);
 

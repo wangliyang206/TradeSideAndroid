@@ -61,4 +61,8 @@ public interface AccountService {
     @GET()
     Observable<ResponseBody> download(@Url String Url);
 
+    /*-----------------------------------------------------------------------首页-----------------------------------------------------------------------*/
+    // 获取城市列表
+    @POST("system/getUserArea")
+    Observable<GsonResponse<CommonResponse>> getCityPicker(@Body GsonRequest<Map<String, Object>> request);
 }

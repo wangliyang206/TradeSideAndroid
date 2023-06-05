@@ -3,2386 +3,409 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/layout_bg_color"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
-<!--    &lt;!&ndash; 头像 &ndash;&gt;-->
-<!--    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--        android:id="@+id/imvi_fragmenthome_head"-->
-<!--        android:layout_width="30dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:layout_marginStart="15dp"-->
-<!--        android:layout_marginTop="@dimen/main_top_margin"-->
-<!--        android:background="@drawable/btn_bg_translucent_selector"-->
-<!--        android:src="@mipmap/ic_home_head"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    &lt;!&ndash; 城市 &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:id="@+id/lila_fragmenthome_city"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginTop="@dimen/main_top_margin"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintLeft_toRightOf="@+id/imvi_fragmenthome_head"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txvi_fragmenthome_city"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:ellipsize="end"-->
-<!--            android:maxWidth="90dp"-->
-<!--            android:maxLines="2"-->
-<!--            android:text="城市"-->
-<!--            android:textColor="@color/text_normal_color"-->
-<!--            android:textSize="14sp" />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:layout_marginStart="3dp"-->
-<!--            android:src="@mipmap/icon_org_arrow" />-->
-<!--    </LinearLayout>-->
-
-<!--    &lt;!&ndash; 搜索 &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:id="@+id/lila_fragmenthome_search"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginEnd="8dp"-->
-<!--        android:background="@color/home_search_bg_color"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/lila_fragmenthome_city"-->
-<!--        app:layout_constraintLeft_toRightOf="@+id/lila_fragmenthome_city"-->
-<!--        app:layout_constraintRight_toLeftOf="@+id/rela_fragmenthome_signin"-->
-<!--        app:layout_constraintTop_toTopOf="@id/lila_fragmenthome_city">-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:layout_marginStart="15dp"-->
-<!--            android:src="@mipmap/ic_home_search" />-->
-
-<!--        <com.zqw.mobile.operation.mvp.ui.widget.VerticalScrollTextView-->
-<!--            android:id="@+id/vstv_fragmenthome_view"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:layout_marginStart="10.5dp"-->
-<!--            android:padding="2dp"-->
-<!--            app:vst_animDuration="1000"-->
-<!--            app:vst_scrollOrientation="up"-->
-<!--            app:vst_singleLine="true"-->
-<!--            app:vst_sleepTime="2000"-->
-<!--            app:vst_textColor="@color/home_search_text_color"-->
-<!--            app:vst_textSize="12sp" />-->
-<!--    </LinearLayout>-->
-
-<!--    &lt;!&ndash; 签到/打卡 &ndash;&gt;-->
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/rela_fragmenthome_signin"-->
-<!--        android:layout_width="30dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:layout_marginEnd="15dp"-->
-<!--        android:background="@drawable/btn_bg_translucent_selector"-->
-<!--        android:visibility="invisible"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@id/lila_fragmenthome_city">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imvi_home_signin"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:src="@mipmap/icon_homt_signin" />-->
-
-<!--    </RelativeLayout>-->
-
-<!--    <android.support.v4.widget.NestedScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:fillViewport="true"-->
-<!--        android:scrollbars="none"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/lila_fragmenthome_city">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@color/fragment_bg_color"-->
-<!--            android:focusable="true"-->
-<!--            android:focusableInTouchMode="true"-->
-<!--            android:orientation="vertical">-->
-
-<!--            &lt;!&ndash; 业绩区域 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmenthome_performa"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="@dimen/dp_10"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="业绩信息"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_performa_line"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_performa_title" />-->
-
-<!--                &lt;!&ndash; 个人拜访量、个人注册量、团队拜访量、团队注册量 &ndash;&gt;-->
-<!--                &lt;!&ndash; 个人拜访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="个人拜访量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_lineleft"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_performa_line" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_performa_lineleft"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_performa_tipsuserstoreinto"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 个人注册量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_tipsuserstoreinto"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="个人注册量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_lineleft"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_linemiddle"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_performa_linemiddle"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_performa_tipsuserstoreinto"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_performa_tipsallvisit"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 团队拜访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_tipsallvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="团队拜访量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_linemiddle"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_lineright"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_performa_lineright"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_performa_tipsallvisit"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_performa_tipsallstoreinto"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 团队注册量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_tipsallstoreinto"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="团队注册量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_lineright"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 个人拜访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_uservisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/status_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_lineleft"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 个人注册量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_userstoreinto"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/weight_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_lineleft"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_linemiddle"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_uservisit" />-->
-
-<!--                &lt;!&ndash; 团队拜访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_allvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/switch_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_linemiddle"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_lineright"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_uservisit" />-->
-
-<!--                &lt;!&ndash; 团队注册量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_performa_allstoreinto"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/home_location_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_lineright"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_uservisit" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_performa_line1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_performa_line1" />-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            &lt;!&ndash; 问题投诉 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmenthome_complaints"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="@dimen/dp_10"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="问题投诉"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_complaints_line"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_complaints_title" />-->
-
-<!--                &lt;!&ndash; 当日投诉量、累计投诉量、门店投诉量、回收员投诉量 &ndash;&gt;-->
-<!--                &lt;!&ndash; 当日投诉量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_tipsuservisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="当日投诉量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_complaints_lineleft"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_complaints_line" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_complaints_lineleft"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_daycomplaints"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_complaints_tipsuservisit"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_complaints_tipsuserstoreinto"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 累计投诉量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_tipsuserstoreinto"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="累计投诉量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_tipsuservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_complaints_lineleft"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_complaints_linemiddle"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_tipsuservisit" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_complaints_linemiddle"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_daycomplaints"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_complaints_tipsuserstoreinto"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_complaints_tipsallvisit"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 门店投诉量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_tipsallvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="门店投诉量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_tipsuservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_complaints_linemiddle"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_complaints_lineright"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_tipsuservisit" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_complaints_lineright"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_daycomplaints"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_complaints_tipsallvisit"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_complaints_tipsallstoreinto"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 回收员投诉量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_tipsallstoreinto"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="回收员投诉量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_tipsuservisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_complaints_lineright"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 当日投诉量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_daycomplaints"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/status_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_complaints_lineleft"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_complaints_tipsuservisit" />-->
-
-<!--                &lt;!&ndash; 累计投诉量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_totalcomplaint"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/weight_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_daycomplaints"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_complaints_lineleft"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_complaints_linemiddle"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_daycomplaints" />-->
-
-<!--                &lt;!&ndash; 门店投诉量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_storecomplaints"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/switch_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_daycomplaints"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_complaints_linemiddle"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_complaints_lineright"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_daycomplaints" />-->
-
-<!--                &lt;!&ndash; 回收员投诉量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_complaints_recyclerscomplaints"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/home_location_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_complaints_daycomplaints"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_complaints_lineright"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_complaints_daycomplaints" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_complaints_line1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_complaints_daycomplaints" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmenthome_complaints_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:visibility="invisible"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_complaints_line1">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="查看详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            &lt;!&ndash; 拜访信息 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmenthome_visit"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="@dimen/dp_10"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="客情拜访"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_checkinrecord"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:drawableStart="@mipmap/icon_home_checkinrecord"-->
-<!--                    android:drawablePadding="5dp"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:text="打卡记录"-->
-<!--                    android:textColor="@color/text_blue_color"-->
-<!--                    android:textSize="13sp"-->
-<!--                    android:visibility="gone"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_visit_title"-->
-<!--                    app:layout_constraintRight_toRightOf="parent" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_visit_line"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_visit_title" />-->
-
-<!--                &lt;!&ndash; 当日拜访量、累计拜访量 &ndash;&gt;-->
-<!--                &lt;!&ndash; 当日拜访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_tipsdayvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="当日拜访量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_visit_line1"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_visit_line" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_visit_line1"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_visit_dayvisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_visit_tipsdayvisit"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_visit_tipstotalvisit"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_visit_tipsdayvisit" />-->
-
-<!--                &lt;!&ndash; 累计拜访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_tipstotalvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="累计拜访量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_visit_tipsdayvisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_visit_line1"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_visit_lineright1"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_visit_tipsdayvisit" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_visit_lineright1"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_visit_dayvisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_visit_tipstotalvisit"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_visit_tipsaccompanyvisit"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_visit_tipsdayvisit" />-->
-
-<!--                &lt;!&ndash; 累计陪访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_tipsaccompanyvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="累计陪访量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_visit_tipsdayvisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_visit_lineright1"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_visit_tipsdayvisit" />-->
-
-<!--                &lt;!&ndash; 当日拜访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_dayvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/common_text_red_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_visit_line1"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_visit_tipsdayvisit" />-->
-
-<!--                &lt;!&ndash; 累计拜访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_totalvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_visit_dayvisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_visit_line1"-->
-<!--                    app:layout_constraintRight_toRightOf="@+id/view_fragmenthome_visit_lineright1"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_visit_dayvisit" />-->
-
-<!--                &lt;!&ndash; 累计陪访量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_accompanyvisit"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/switch_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_visit_dayvisit"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_visit_lineright1"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_visit_dayvisit" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_visit_line2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_visit_dayvisit" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_clock"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framegreen_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="打卡"-->
-<!--                    android:textColor="@color/btn_press_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:visibility="gone"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmenthome_visit_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_visit_visit"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmenthome_visit_details" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_visit_visit"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framered_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="拜访"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:visibility="gone"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmenthome_visit_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/lila_fragmenthome_visit_details"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmenthome_visit_details" />-->
-
-<!--                &lt;!&ndash; 拜访详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmenthome_visit_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:visibility="gone"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/lila_fragmenthome_accompany_details"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_visit_line2">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="拜访详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-
-<!--                &lt;!&ndash; 陪访详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmenthome_accompany_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_framegreen_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:visibility="gone"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_visit_line2">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="陪访详情"-->
-<!--                        android:textColor="@color/btn_press_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow2" />-->
-<!--                </LinearLayout>-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            &lt;!&ndash; 门店信息 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmenthome_storestatistic"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="@dimen/dp_10"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="门店信息"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                &lt;!&ndash; 门店总数 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_totalcount"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:gravity="bottom"-->
-<!--                    android:text=""-->
-<!--                    android:textColor="@color/btn_press_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_storestatistic_title"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_storestatistic_title"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_storestatistic_title" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_storestatistic_line"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_storestatistic_title" />-->
-
-<!--                &lt;!&ndash; 僵尸、沉睡、静默 &ndash;&gt;-->
-
-<!--                &lt;!&ndash; 僵尸 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_tipszombie"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="僵尸"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_storestatistic_lineleft1"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_storestatistic_line" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_storestatistic_lineleft1"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_storestatistic_zombie"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_storestatistic_tipszombie"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_storestatistic_tipssilent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_storestatistic_tipszombie" />-->
-
-<!--                &lt;!&ndash; 静默 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_tipssilent"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="静默"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_storestatistic_tipszombie"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_storestatistic_lineleft1"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_storestatistic_lineright1"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_storestatistic_tipszombie" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_storestatistic_lineright1"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_storestatistic_zombie"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_storestatistic_tipssilent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_storestatistic_tipsactive"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_storestatistic_tipszombie" />-->
-
-<!--                &lt;!&ndash; 活跃 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_tipsactive"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="活跃"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_storestatistic_tipszombie"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_storestatistic_lineright1"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_storestatistic_tipszombie" />-->
-
-<!--                &lt;!&ndash; 僵尸 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_zombie"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/common_text_red_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_storestatistic_lineleft1"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_storestatistic_tipszombie" />-->
-
-<!--                &lt;!&ndash; 静默 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_silent"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_storestatistic_zombie"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_storestatistic_lineleft1"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_storestatistic_lineright1"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_storestatistic_zombie" />-->
-
-<!--                &lt;!&ndash; 活跃 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_active"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/switch_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_storestatistic_zombie"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_storestatistic_lineright1"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_storestatistic_zombie" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_storestatistic_line1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_storestatistic_zombie" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_storestatistic_nearbystores"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framegreen_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="附近门店"-->
-<!--                    android:textColor="@color/btn_press_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:visibility="gone"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmenthome_storestatistic_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/lila_fragmenthome_storestatistic_details"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmenthome_storestatistic_details" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmenthome_storestatistic_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:visibility="invisible"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_storestatistic_line1">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="查看详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            &lt;!&ndash; 订单信息 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmenthome_orderstatistic"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="@dimen/dp_10"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_orderstatistic_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="订单信息"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                &lt;!&ndash; 门店总数 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_orderstatistic_totalcount"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:gravity="bottom"-->
-<!--                    android:text=""-->
-<!--                    android:textColor="@color/btn_press_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_title"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_orderstatistic_title"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_title" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_orderstatistic_line"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_title" />-->
-
-<!--                &lt;!&ndash; 当日回收单数、当日回收重量、当日交货重量、车辆库存 &ndash;&gt;-->
-<!--                &lt;!&ndash; 当日回收单数 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_orderstatistic_tipsordernum"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="日回收数"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_orderstatistic_lineleft"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_orderstatistic_line" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_orderstatistic_lineleft"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_ordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_orderstatistic_tipsrecyweight"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum" />-->
-
-<!--                &lt;!&ndash; 当日回收重量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_orderstatistic_tipsrecyweight"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="日回收量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_orderstatistic_lineleft"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_orderstatistic_linemiddle"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_orderstatistic_linemiddle"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_ordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_orderstatistic_tipsrecyweight"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_orderstatistic_tipsdelivery"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum" />-->
-
-<!--                &lt;!&ndash; 当日交货重量 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_orderstatistic_tipsdelivery"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="日交货量"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_orderstatistic_linemiddle"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_orderstatistic_lineright"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_orderstatistic_lineright"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_ordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_orderstatistic_tipsdelivery"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_orderstatistic_tipsstocktotal"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum" />-->
-
-<!--                &lt;!&ndash; 车辆库存 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_orderstatistic_tipsstocktotal"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="车辆库存"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_orderstatistic_lineright"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum" />-->
-
-<!--                &lt;!&ndash; 当日回收单数 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmenthome_orderstatistic_ordernum"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/status_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_orderstatistic_lineleft"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_tipsordernum" />-->
-
-<!--                &lt;!&ndash; 当日回收重量 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_ordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_orderstatistic_lineleft"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_orderstatistic_linemiddle"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_ordernum">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txvi_fragmenthome_orderstatistic_recyweight"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="0"-->
-<!--                        android:textColor="@color/weight_text_color"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:textStyle="bold" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txvi_fragmenthome_orderstatistic_recyweightunit"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="bottom"-->
-<!--                        android:text=""-->
-<!--                        android:textColor="@color/weight_text_color"-->
-<!--                        android:textSize="11sp" />-->
-<!--                </LinearLayout>-->
-
-<!--                &lt;!&ndash; 日交货量 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_ordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_orderstatistic_linemiddle"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_orderstatistic_lineright"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_ordernum">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txvi_fragmenthome_orderstatistic_delivery"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="0"-->
-<!--                        android:textColor="@color/switch_color"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:textStyle="bold" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txvi_fragmenthome_orderstatistic_deliveryunt"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="bottom"-->
-<!--                        android:text=""-->
-<!--                        android:textColor="@color/switch_color"-->
-<!--                        android:textSize="11sp" />-->
-<!--                </LinearLayout>-->
-
-<!--                &lt;!&ndash; 车辆库存 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_ordernum"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_orderstatistic_lineright"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_orderstatistic_ordernum">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txvi_fragmenthome_orderstatistic_stocktotal"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="0"-->
-<!--                        android:textColor="@color/home_location_text_color"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:textStyle="bold" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/txvi_fragmenthome_orderstatistic_stocktotalunit"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:gravity="bottom"-->
-<!--                        android:text=""-->
-<!--                        android:textColor="@color/home_location_text_color"-->
-<!--                        android:textSize="11sp" />-->
-
-<!--                </LinearLayout>-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmenthome_orderstatistic_line1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_orderstatistic_ordernum" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmenthome_orderstatistic_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:visibility="invisible"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_orderstatistic_line1">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="查看详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-
-<!--            &lt;!&ndash; 门店 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmentregister_storestatistic"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_storestatistic_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="门店"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_storestatistic_linetop"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_storestatistic_title" />-->
-
-<!--                &lt;!&ndash; 今日注册、累计注册 &ndash;&gt;-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_storestatistic_tipsregistertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="今日注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_storestatistic_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_storestatistic_linetop" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_storestatistic_linetopmiddle"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_storestatistic_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmentregister_storestatistic_tipsregistertoday"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmentregister_storestatistic_tipstotalregister"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_storestatistic_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_storestatistic_tipstotalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="累计注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_storestatistic_tipsregistertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_storestatistic_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_storestatistic_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_storestatistic_registertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/common_text_red_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_storestatistic_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_storestatistic_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_storestatistic_totalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_storestatistic_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_storestatistic_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_storestatistic_registertoday" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_storestatistic_linetopbottom"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_storestatistic_registertoday" />-->
-
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_storestatistic_quickregister"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framered_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="门店快捷注册"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:visibility="gone"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmentregister_storestatistic_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmentregister_storestatistic_register"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmentregister_storestatistic_details" />-->
-
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_storestatistic_register"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framered_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="门店注册"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:visibility="gone"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmentregister_storestatistic_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/lila_fragmentregister_storestatistic_details"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmentregister_storestatistic_details" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmentregister_storestatistic_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:visibility="invisible"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_storestatistic_linetopbottom">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="查看详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            &lt;!&ndash; 特约商户注册 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmentregister_specialstore"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_specialstore_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="特约商户"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_specialstore_linetop"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_specialstore_title" />-->
-
-<!--                &lt;!&ndash; 今日注册、累计注册 &ndash;&gt;-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_specialstore_tipsregistertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="今日注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_specialstore_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_specialstore_linetop" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_specialstore_linetopmiddle"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_specialstore_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmentregister_specialstore_tipsregistertoday"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmentregister_specialstore_tipstotalregister"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_specialstore_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_specialstore_tipstotalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="累计注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_specialstore_tipsregistertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_specialstore_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_specialstore_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_specialstore_registertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/common_text_red_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_specialstore_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_specialstore_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_specialstore_totalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_specialstore_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_specialstore_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_specialstore_registertoday" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_specialstore_linetopbottom"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_specialstore_registertoday" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_specialstore_register"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framered_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="特约商户注册"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmentregister_specialstore_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/lila_fragmentregister_specialstore_details"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmentregister_specialstore_details" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmentregister_specialstore_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_specialstore_linetopbottom">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="查看详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            &lt;!&ndash; 回收员 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmentregister_recycler"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="@dimen/dp_10"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_recycler_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="回收员"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_recycler_linetop"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_recycler_title" />-->
-
-<!--                &lt;!&ndash; 今日注册、累计注册 &ndash;&gt;-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_recycler_tipsregistertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="今日注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_recycler_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_recycler_linetop" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_recycler_linetopmiddle"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_recycler_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmentregister_recycler_tipsregistertoday"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmentregister_recycler_tipstotalregister"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_recycler_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_recycler_tipstotalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="累计注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_recycler_tipsregistertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_recycler_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_recycler_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_recycler_registertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/weight_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_recycler_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_recycler_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_recycler_totalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/btn_press_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_recycler_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_recycler_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_recycler_registertoday" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_recycler_linetopbottom"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_recycler_registertoday" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_recycler_register"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framered_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="回收员注册"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmentregister_recycler_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/lila_fragmentregister_recycler_details"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmentregister_recycler_details" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmentregister_recycler_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_recycler_linetopbottom">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="查看详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            &lt;!&ndash; 资质商 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmentregister_qualifiedsupplier"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="@dimen/dp_10"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_qualifiedsupplier_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="资质商"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_qualifiedsupplier_linetop"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_qualifiedsupplier_title" />-->
-
-<!--                &lt;!&ndash; 今日注册、累计注册 &ndash;&gt;-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_qualifiedsupplier_tipsregistertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="今日注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_qualifiedsupplier_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_qualifiedsupplier_linetop" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_qualifiedsupplier_linetopmiddle"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_qualifiedsupplier_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmentregister_qualifiedsupplier_tipsregistertoday"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmentregister_qualifiedsupplier_tipstotalregister"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_qualifiedsupplier_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_qualifiedsupplier_tipstotalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="累计注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_qualifiedsupplier_tipsregistertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_qualifiedsupplier_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_qualifiedsupplier_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_qualifiedsupplier_registertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/switch_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_qualifiedsupplier_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_qualifiedsupplier_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_qualifiedsupplier_totalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/home_location_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_qualifiedsupplier_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_qualifiedsupplier_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_qualifiedsupplier_registertoday" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_qualifiedsupplier_linetopbottom"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_qualifiedsupplier_registertoday" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_qualifiedsupplier_register"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framered_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="资质商注册"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmentregister_qualifiedsupplier_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/lila_fragmentregister_qualifiedsupplier_details"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmentregister_qualifiedsupplier_details" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmentregister_qualifiedsupplier_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_qualifiedsupplier_linetopbottom">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="查看详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            &lt;!&ndash; 冶炼厂 &ndash;&gt;-->
-<!--            <android.support.constraint.ConstraintLayout-->
-<!--                android:id="@+id/cola_fragmentregister_smelter"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/dp_10"-->
-<!--                android:layout_marginTop="@dimen/dp_10"-->
-<!--                android:layout_marginEnd="@dimen/dp_10"-->
-<!--                android:layout_marginBottom="@dimen/dp_10"-->
-<!--                android:background="@drawable/layout_bg_shape"-->
-<!--                android:visibility="gone">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_smelter_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:text="冶炼厂"-->
-<!--                    android:textColor="@color/text_normal_color"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_smelter_linetop"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_smelter_title" />-->
-
-<!--                &lt;!&ndash; 今日注册、累计注册 &ndash;&gt;-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_smelter_tipsregistertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="今日注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_smelter_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_smelter_linetop" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_smelter_linetopmiddle"-->
-<!--                    android:layout_width="0.1dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:background="@color/line_input_color"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_smelter_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmentregister_smelter_tipsregistertoday"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmentregister_smelter_tipstotalregister"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_smelter_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_smelter_tipstotalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="累计注册"-->
-<!--                    android:textColor="@color/common_input_edit_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_smelter_tipsregistertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_smelter_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_smelter_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 今日注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_smelter_registertoday"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="5dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/status_text_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmentregister_smelter_linetopmiddle"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_smelter_tipsregistertoday" />-->
-
-<!--                &lt;!&ndash; 累计注册 &ndash;&gt;-->
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_smelter_totalregister"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="0"-->
-<!--                    android:textColor="@color/switch_color"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmentregister_smelter_registertoday"-->
-<!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmentregister_smelter_linetopmiddle"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmentregister_smelter_registertoday" />-->
-
-<!--                <View-->
-<!--                    android:id="@+id/view_fragmentregister_smelter_linetopbottom"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="0.1dp"-->
-<!--                    android:layout_marginStart="@dimen/dp_10"-->
-<!--                    android:layout_marginTop="@dimen/dp_10"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@color/line_frame_color"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentregister_smelter_registertoday" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txvi_fragmentregister_smelter_register"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginEnd="@dimen/dp_10"-->
-<!--                    android:background="@drawable/btn_bgwhite_framered_selector"-->
-<!--                    android:paddingStart="15dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="15dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    android:text="冶炼厂注册"-->
-<!--                    android:textColor="@color/btn_normal_color"-->
-<!--                    android:textSize="12sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/lila_fragmentregister_smelter_details"-->
-<!--                    app:layout_constraintRight_toLeftOf="@+id/lila_fragmentregister_smelter_details"-->
-<!--                    app:layout_constraintTop_toTopOf="@+id/lila_fragmentregister_smelter_details" />-->
-
-<!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lila_fragmentregister_smelter_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:background="@drawable/btn_bgwhite_frameblue_selector"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingStart="8dp"-->
-<!--                    android:paddingTop="3dp"-->
-<!--                    android:paddingEnd="3dp"-->
-<!--                    android:paddingBottom="3dp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintRight_toRightOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentregister_smelter_linetopbottom">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="查看详情"-->
-<!--                        android:textColor="@color/text_blue_color"-->
-<!--                        android:textSize="12sp" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="2dp"-->
-<!--                        android:src="@mipmap/icon_financial_arrow1" />-->
-<!--                </LinearLayout>-->
-<!--            </android.support.constraint.ConstraintLayout>-->
-
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="10dp" />-->
-<!--        </LinearLayout>-->
-<!--    </android.support.v4.widget.NestedScrollView>-->
-
-<!--    &lt;!&ndash; Loading &ndash;&gt;-->
-<!--    <include-->
-<!--        android:id="@+id/lila_fragmenthome_loading"-->
-<!--        layout="@layout/comm_loading_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:visibility="gone" />-->
-
-<!--    &lt;!&ndash; 定位未成功 &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:id="@+id/lila_fragmenthome_nottargeted"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="@color/layout_bg_color"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="vertical"-->
-<!--        android:visibility="gone">-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@mipmap/ic_positioning_failure" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:text="定位失败"-->
-<!--            android:textColor="@color/home_location_text_color"-->
-<!--            android:textSize="14sp" />-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            &lt;!&ndash; 手动定位 &ndash;&gt;-->
-<!--            <Button-->
-<!--                android:id="@+id/btn_home_manual"-->
-<!--                style="?android:attr/borderlessButtonStyle"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="30dp"-->
-<!--                android:layout_marginEnd="5dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:background="@drawable/btn_bgwhite_framered_selector"-->
-<!--                android:text="手动定位"-->
-<!--                android:textColor="@color/btn_normal_color"-->
-<!--                android:textSize="16sp" />-->
-
-<!--            &lt;!&ndash; 重新加载 &ndash;&gt;-->
-<!--            <Button-->
-<!--                android:id="@+id/btn_home_load"-->
-<!--                style="?android:attr/borderlessButtonStyle"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="5dp"-->
-<!--                android:layout_marginEnd="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:background="@drawable/btn_bg_selector"-->
-<!--                android:text="重新加载"-->
-<!--                android:textColor="@android:color/white"-->
-<!--                android:textSize="16sp" />-->
-<!--        </LinearLayout>-->
-<!--    </LinearLayout>-->
+    <!-- 城市 -->
+    <LinearLayout
+        android:id="@+id/lila_fragmenthome_city"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="@dimen/main_top_margin"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txvi_fragmenthome_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:maxWidth="90dp"
+            android:maxLines="2"
+            android:text="城市"
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="3dp"
+            android:src="@mipmap/icon_org_arrow" />
+    </LinearLayout>
+
+    <!-- 搜索 -->
+    <LinearLayout
+        android:id="@+id/lila_fragmenthome_search"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/home_search_bg_color"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/lila_fragmenthome_city"
+        app:layout_constraintLeft_toRightOf="@+id/lila_fragmenthome_city"
+        app:layout_constraintRight_toLeftOf="@+id/rela_fragmenthome_message"
+        app:layout_constraintTop_toTopOf="@id/lila_fragmenthome_city">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:src="@mipmap/ic_home_search" />
+
+        <com.zqw.mobile.tradeside.mvp.ui.widget.VerticalScrollTextView
+            android:id="@+id/vstv_fragmenthome_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10.5dp"
+            android:padding="2dp"
+            app:vst_animDuration="1000"
+            app:vst_scrollOrientation="up"
+            app:vst_singleLine="true"
+            app:vst_sleepTime="2000"
+            app:vst_textColor="@color/home_search_text_color"
+            app:vst_textSize="12sp" />
+    </LinearLayout>
+
+    <!-- 消息 -->
+    <RelativeLayout
+        android:id="@+id/rela_fragmenthome_message"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/btn_bg_translucent_selector"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lila_fragmenthome_city">
+
+        <ImageView
+            android:id="@+id/imvi_home_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_home_message" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lila_fragmenthome_city">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/fragment_bg_color"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <!--            &lt;!&ndash; 业绩区域 &ndash;&gt;-->
+            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                android:id="@+id/cola_fragmenthome_performa"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="@dimen/dp_10"-->
+            <!--                android:layout_marginTop="@dimen/dp_10"-->
+            <!--                android:layout_marginEnd="@dimen/dp_10"-->
+            <!--                android:background="@drawable/layout_bg_shape">-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_title"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="@dimen/dp_10"-->
+            <!--                    android:layout_marginTop="@dimen/dp_10"-->
+            <!--                    android:text="业绩信息"-->
+            <!--                    android:textColor="@color/common_text_color"-->
+            <!--                    android:textSize="16sp"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--                <View-->
+            <!--                    android:id="@+id/view_fragmenthome_performa_line"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="0.1dp"-->
+            <!--                    android:layout_marginStart="@dimen/dp_10"-->
+            <!--                    android:layout_marginTop="@dimen/dp_10"-->
+            <!--                    android:layout_marginEnd="@dimen/dp_10"-->
+            <!--                    android:background="@color/line_frame_color"-->
+            <!--                    app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_performa_title" />-->
+
+            <!--                &lt;!&ndash; 个人拜访量、个人注册量、团队拜访量、团队注册量 &ndash;&gt;-->
+            <!--                &lt;!&ndash; 个人拜访量 &ndash;&gt;-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="10dp"-->
+            <!--                    android:layout_marginTop="@dimen/dp_10"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="个人拜访量"-->
+            <!--                    android:textColor="@color/common_edit_hint_color"-->
+            <!--                    android:textSize="12sp"-->
+            <!--                    app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_lineleft"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_performa_line" />-->
+
+            <!--                <View-->
+            <!--                    android:id="@+id/view_fragmenthome_performa_lineleft"-->
+            <!--                    android:layout_width="0.1dp"-->
+            <!--                    android:layout_height="0dp"-->
+            <!--                    android:layout_marginStart="5dp"-->
+            <!--                    android:layout_marginEnd="5dp"-->
+            <!--                    android:background="@color/line_input_color"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_performa_tipsuserstoreinto"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
+
+            <!--                &lt;!&ndash; 个人注册量 &ndash;&gt;-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_tipsuserstoreinto"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="个人注册量"-->
+            <!--                    android:textColor="@color/common_edit_hint_color"-->
+            <!--                    android:textSize="12sp"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_lineleft"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_linemiddle"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
+
+            <!--                <View-->
+            <!--                    android:id="@+id/view_fragmenthome_performa_linemiddle"-->
+            <!--                    android:layout_width="0.1dp"-->
+            <!--                    android:layout_height="0dp"-->
+            <!--                    android:layout_marginStart="5dp"-->
+            <!--                    android:layout_marginEnd="5dp"-->
+            <!--                    android:background="@color/line_input_color"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_performa_tipsuserstoreinto"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_performa_tipsallvisit"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
+
+            <!--                &lt;!&ndash; 团队拜访量 &ndash;&gt;-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_tipsallvisit"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="团队拜访量"-->
+            <!--                    android:textColor="@color/common_edit_hint_color"-->
+            <!--                    android:textSize="12sp"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_linemiddle"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_lineright"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
+
+            <!--                <View-->
+            <!--                    android:id="@+id/view_fragmenthome_performa_lineright"-->
+            <!--                    android:layout_width="0.1dp"-->
+            <!--                    android:layout_height="0dp"-->
+            <!--                    android:layout_marginStart="5dp"-->
+            <!--                    android:layout_marginEnd="5dp"-->
+            <!--                    android:background="@color/line_input_color"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/txvi_fragmenthome_performa_tipsallvisit"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/txvi_fragmenthome_performa_tipsallstoreinto"-->
+            <!--                    app:layout_constraintRight_toRightOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
+
+            <!--                &lt;!&ndash; 团队注册量 &ndash;&gt;-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_tipsallstoreinto"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginEnd="@dimen/dp_10"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="团队注册量"-->
+            <!--                    android:textColor="@color/common_edit_hint_color"-->
+            <!--                    android:textSize="12sp"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_tipsuservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_lineright"-->
+            <!--                    app:layout_constraintRight_toRightOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
+
+            <!--                &lt;!&ndash; 个人拜访量 &ndash;&gt;-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_uservisit"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="10dp"-->
+            <!--                    android:layout_marginEnd="5dp"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="0"-->
+            <!--                    android:textColor="@color/status_text_color"-->
+            <!--                    android:textSize="14sp"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_lineleft"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_performa_tipsuservisit" />-->
+
+            <!--                &lt;!&ndash; 个人注册量 &ndash;&gt;-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_userstoreinto"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="5dp"-->
+            <!--                    android:layout_marginEnd="5dp"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="0"-->
+            <!--                    android:textColor="@color/weight_text_color"-->
+            <!--                    android:textSize="14sp"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_lineleft"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_linemiddle"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_uservisit" />-->
+
+            <!--                &lt;!&ndash; 团队拜访量 &ndash;&gt;-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_allvisit"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="5dp"-->
+            <!--                    android:layout_marginEnd="5dp"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="0"-->
+            <!--                    android:textColor="@color/switch_color"-->
+            <!--                    android:textSize="14sp"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_linemiddle"-->
+            <!--                    app:layout_constraintRight_toLeftOf="@+id/view_fragmenthome_performa_lineright"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_uservisit" />-->
+
+            <!--                &lt;!&ndash; 团队注册量 &ndash;&gt;-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/txvi_fragmenthome_performa_allstoreinto"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="5dp"-->
+            <!--                    android:layout_marginEnd="@dimen/dp_10"-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:text="0"-->
+            <!--                    android:textColor="@color/home_location_text_color"-->
+            <!--                    android:textSize="14sp"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit"-->
+            <!--                    app:layout_constraintLeft_toRightOf="@+id/view_fragmenthome_performa_lineright"-->
+            <!--                    app:layout_constraintRight_toRightOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="@+id/txvi_fragmenthome_performa_uservisit" />-->
+
+            <!--                <View-->
+            <!--                    android:id="@+id/view_fragmenthome_performa_line1"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="0.1dp"-->
+            <!--                    android:layout_marginStart="@dimen/dp_10"-->
+            <!--                    android:layout_marginTop="@dimen/dp_10"-->
+            <!--                    android:layout_marginEnd="@dimen/dp_10"-->
+            <!--                    android:background="@color/line_frame_color"-->
+            <!--                    app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_performa_uservisit" />-->
+
+            <!--                &lt;!&ndash; 查看详情 &ndash;&gt;-->
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="10dp"-->
+            <!--                    android:layout_marginEnd="10dp"-->
+            <!--                    android:layout_marginBottom="10dp"-->
+            <!--                    android:gravity="center_vertical"-->
+            <!--                    android:paddingStart="8dp"-->
+            <!--                    android:paddingTop="3dp"-->
+            <!--                    android:paddingEnd="3dp"-->
+            <!--                    android:paddingBottom="3dp"-->
+            <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                    app:layout_constraintRight_toRightOf="parent"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_performa_line1" />-->
+            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Loading -->
+    <include
+        android:id="@+id/lila_fragmenthome_loading"
+        layout="@layout/comm_loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- 定位未成功 -->
+    <LinearLayout
+        android:id="@+id/lila_fragmenthome_nottargeted"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/layout_bg_color"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_positioning_failure" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="定位失败"
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <!-- 手动定位 -->
+            <Button
+                android:id="@+id/btn_home_manual"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_white_green_selector"
+                android:text="手动定位"
+                android:textColor="@color/button_normal_bak"
+                android:textSize="16sp" />
+
+            <!-- 重新加载 -->
+            <Button
+                android:id="@+id/btn_home_load"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg_selector"
+                android:text="重新加载"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

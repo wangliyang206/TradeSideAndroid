@@ -38,4 +38,9 @@
     <string name="main_tab_home">首页</string>
     <string name="main_tab_tradinghall">交易大厅</string>
     <string name="main_tab_me">我的</string>
+
+    <!-- 选择城市 -->
+    <string name="cp_located_city">定位城市</string>
+    <string name="cp_locating">正在定位…</string>
+    <string name="cp_hot_city">热门城市</string>                                                      <!-- 已开通城市 -->
 </resources>

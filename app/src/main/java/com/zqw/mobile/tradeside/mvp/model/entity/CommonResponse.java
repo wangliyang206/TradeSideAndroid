@@ -1,5 +1,7 @@
 package com.zqw.mobile.tradeside.mvp.model.entity;
 
+import java.util.List;
+
 /**
  * 包名： com.zqw.mobile.recycling.model
  * 对象名： CommonResponse
@@ -17,6 +19,17 @@ public class CommonResponse {
     private int succ = 0;
     // ishaveUser为0时此字段为空字符串，为空字符串是显示默认的提示信息
     private String msg = "";
+
+
+    private List<ArealistBean> areaList;
+
+    public List<ArealistBean> getAreaList() {
+        return areaList;
+    }
+
+    public void setAreaList(List<ArealistBean> areaList) {
+        this.areaList = areaList;
+    }
 
     public int getSucc() {
         return succ;
